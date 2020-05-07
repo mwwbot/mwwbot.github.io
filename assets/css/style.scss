@@ -1,0 +1,66 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Just make a nice looking line over the comments section of the post page.
+#comments-line {
+  p {
+    overflow: hidden;
+    text-align: center;
+    font-size: inherit;
+    font-weight: normal;
+    margin: 0 0 0.5rem 0;
+  }
+
+  p:before,
+  p:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  p:before {
+    right: 0.5rem;
+    margin-left: -50%;
+    width: 15%
+  }
+
+  p:after {
+    left: 0.5rem;
+    margin-right: -50%;
+    width: 85%
+  }
+}
+
+#comments-form {
+  form {
+    padding: 0;
+  }
+
+  .row {
+    width: 100%;
+    margin: 0.3rem;
+
+    input {
+      width: 95%;
+      padding: 0.3rem;
+    }
+
+    small {
+      font-size: smaller;
+      margin-left: 0.3rem;
+    }
+  }
+
+  #message {
+    width: 95%;
+  }
+
+  textarea {
+    padding: 0.3rem;
+  }
+}

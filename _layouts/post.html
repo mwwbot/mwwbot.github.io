@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+    </p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <div id="comments-line">
+    <p>Comments</p>
+  </div>
+
+  <div id="comments-form">
+    <div class="row">
+      <textarea id="message" name="message" rows="10" placeholder="Join the discussion"></textarea>
+    </div>
+    <div class="row">
+      <input type="text" id="name" placeholder="Your Name"/>
+    </div>
+    <div class="row">
+      <input type="email" id="email" placeholder="Email address"/>
+    </div>
+    <div class="row">
+      <small id="emailHelp">Email is optional. Used for <a href="https://gravatar.com">gravatar</a> images.</small>
+    </div>
+    <button id="comment-submit" onclick="postComment('{{page.id}}');">Post Comment</button>
+  </div>
+
+  {%- if site.data.comments -%}
+  <div id="comments">
+      {%- assign comments = site.data.comments | where: "page_id", page.id | sort: "date" -%}
+
+      {%- for comment in comments -%}
+        <div class="comment">
+          <div class="comment-author">
+            <img src="https://secure.gravatar.com/avatar/{{ comment.mail_hash }}?s=60&d=mp&r=g" alt="{{ comment.name }}">
+            <span class="commenter">{{ comment.name }}</span>
+          </div>
+          <div class="comment-meta">
+            <time datetime="{{ comment.date | date_to_xmlschema }}">{{ comment.date | date: "%B %-d, %Y" }}</time>
+          </div>
+          <div class="comment-content">
+            {{ comment.msg | markdownify }}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+<script src="{{ base.url | prepend: site.url }}/assets/js/comments.js"></script>
