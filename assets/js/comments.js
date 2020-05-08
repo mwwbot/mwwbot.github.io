@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/comments';
+const url = 'https://fnub1sz0b8.execute-api.us-west-2.amazonaws.com/Prod/comment/';
 
 async function postComment(pageId) {
   document.getElementById('comment-submit').disabled = false;
