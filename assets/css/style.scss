@@ -64,3 +64,31 @@
     padding: 0.3rem;
   }
 }
+
+#comments {
+  margin-top: 1rem;
+
+  .comment {
+    border-left: solid 1px;
+    padding-left: 1rem;
+  }
+
+  .comment-author {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      margin: 0;
+      padding: 0;
+    }
+    span {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+  }
+
+  .comment-date {
+    font-size: small;
+  }
+}
