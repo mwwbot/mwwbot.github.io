@@ -15,13 +15,13 @@ async function postComment(pageId) {
     body: JSON.stringify({
       name: name,
       email: email,
-      comment: msg,
+      msg: msg,
       pageId: pageId
     })
   };
   await fetch(url, request)
     .then(resp => {
-      // Rest the form
+      // Reset the form
       document.getElementById('message').value = '';
       document.getElementById('name').value = '';
       document.getElementById('email').value = '';
